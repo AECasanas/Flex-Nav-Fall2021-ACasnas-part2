@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Display: flex nav</title>
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="css/font-awesome-4.6.3/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        color: white;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      header {
+        background: #0d1313;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+      }
+
+      .logo {
+        color: white;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        padding: 10px;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a {
+        text-transform: uppercase;
+        color: #cdd0d0;
+        padding: 20px;
+        display: inline-block;
+      }
+
+      a.active {
+        font-weight: bold;
+        color: #62debe;
+        background: #444;
+      }
+
+      .sign-out-link {
+        color: #62debe;
+        font-size: 0.8rem;
+        margin-left: auto;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      /*added for responsive*/
+      @media (max-width: 600px) {
+        header {
+          flex-wrap: wrap;
+        }
+        nav {
+          order: 2;
+          background: #333;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href="#" class="logo"><i class="fa fa-bullseye fa-3x"></i></a>
+      <nav>
+        <ul>
+          <li><a class="active" href="recipes.html">Recipes</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="delivery.html">Delivery</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="sign-out-link">Sign Out</a>
+    </header>
+
+    <script>
+      var mainNav = document.querySelectorAll("nav a");
+      document.addEventListener("click", showActive);
+
+      function showActive(event) {
+        event.preventDefault();
+        if (event.target.matches("nav a")) {
+          for (let navItem of mainNav) {
+            navItem.classList.remove("active");
+          }
+          event.target.classList.add("active");
+        }
+      }
+    </script>
+  </body>
+</html>
